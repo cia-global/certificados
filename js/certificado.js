@@ -1,17 +1,10 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(
+  window.ENV.SUPABASE_URL,
+  window.ENV.SUPABASE_ANON_KEY
+);
 
-// Verificar que existan las variables
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  console.error("❌ Faltan variables de entorno de Supabase");
-  console.error("VITE_SUPABASE_URL:", SUPABASE_URL ? "✅" : "❌");
-  console.error("VITE_SUPABASE_ANON_KEY:", SUPABASE_ANON_KEY ? "✅" : "❌");
-}
-
-// Crear cliente de Supabase con variables de entorno
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 // ===================================
 // FUNCIÓN PARA OCULTAR EL PRELOADER
