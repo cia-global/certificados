@@ -74,7 +74,7 @@ async function loadCertificate() {
     document.getElementById("documento").innerText = 
       "Identificado con cédula de ciudadanía N° " + (data.documento || "");
     document.getElementById("curso").innerText = data.curso || "";
-    document.getElementById("fecha").innerText = "Dado en Yopal, Junio 27 de 2025";
+    document.getElementById("fecha").innerText = "Dado en Yopal, Diciembre 17 de 2025";
     document.getElementById("horas").innerText = "Duración: " + (data.horas || "0") + " horas";
     
     // Si existe elemento firma (aunque no está en el HTML actual)
