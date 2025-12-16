@@ -1,10 +1,17 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-const supabase = createClient(
-  "https://preqwoznjufvrrzwfzqs.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InByZXF3b3puanVmdnJyendmenFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0OTYwMjMsImV4cCI6MjA3OTA3MjAyM30.d0ijnt2GCRztWks7XdG8QT8dJOoudy5ghha1ta_IxWQ"
-);
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
+// Verificar que existan las variables
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  console.error("❌ Faltan variables de entorno de Supabase");
+  console.error("VITE_SUPABASE_URL:", SUPABASE_URL ? "✅" : "❌");
+  console.error("VITE_SUPABASE_ANON_KEY:", SUPABASE_ANON_KEY ? "✅" : "❌");
+}
+
+// Crear cliente de Supabase con variables de entorno
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 // ===================================
 // FUNCIÓN PARA OCULTAR EL PRELOADER
