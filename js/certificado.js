@@ -68,13 +68,23 @@ async function loadCertificate() {
       return;
     }
 
+      const fechaBD = new Date(data.fecha_certificado);
+
+    const dia = fechaBD.getDate();
+    const año = fechaBD.getFullYear();
+
+    const meses = [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
     // Actualizar contenido del certificado
     document.getElementById("empresa").innerText = data.empresa || "";
     document.getElementById("nombre").innerText = data.nombre_completo || "";
     document.getElementById("documento").innerText = 
       "Identificado con cédula de ciudadanía N° " + (data.documento || "");
     document.getElementById("curso").innerText = data.curso || "";
-    document.getElementById("fecha").innerText = "Dado en Yopal, Diciembre 17 de 2025";
+    document.getElementById("fecha").innerText = `Dado en Yopal, ${mes} ${dia} de ${año}` || "";
     document.getElementById("horas").innerText = "Duración: " + (data.horas || "0") + " horas";
     
     // Si existe elemento firma (aunque no está en el HTML actual)
@@ -82,6 +92,9 @@ async function loadCertificate() {
     if (firmaElement) {
       firmaElement.innerText = data.firma_nombre || "";
     }
+
+  
+    const mes = meses[fechaBD.getMonth()];
 
     // MANEJO ESPECIAL DE LA IMAGEN
     const imgElement = document.getElementById("imgFoto");
